@@ -1,34 +1,28 @@
 
-name: Project CI/CD Pipeline
+name: Deploy to Amazon ECS
 
 on:
- push:
+  push:
     branches: [ "main" ]
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
- jobs:
-    build-java-app:
-      runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
-
-        - name: Setup Java
-          uses: actions/setup-java@v3
-          with:
-            distribution: 'temurin'
-            java-version: '17'
-
-        - name: Build project
-          run: mvn clean install -DsKipTests
-
-        - name: Login Docker Hub
-          run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-
-        - name: Build docker image
-          run: docker build -t daniel00dev/ci-cd-pipeline .
-
-        - name: push image docker
-          run: docker push daniel00dev/ci-cd-pipeline
-
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build project
+        run: mvn clean install -DsKipTests
+      - name: Login Docker Hub
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+      - name: Build docker image
+        run: docker build -t daniel00dev/ci-cd-pipeline .
+      - name: push image docker
+        run: docker push daniel00dev/ci-cd-pipeline
