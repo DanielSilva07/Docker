@@ -2,10 +2,10 @@
 name: Project CI/CD Pipeline
 
 on:
-  push:
+ push:
     branches: [ "main" ]
 
-  job:
+    jobs:
     build-java-app:
       runs-on: ubuntu-latest
 
