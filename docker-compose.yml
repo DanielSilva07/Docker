@@ -1,0 +1,7 @@
+version: "3"
+services:
+  springboot-docker:
+    image: dockertest
+    container_name: springboot-docker
+    ports:
+      - "8087:8087"
