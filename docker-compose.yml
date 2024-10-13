@@ -2,6 +2,6 @@ version: "3"
 services:
   springboot-docker:
     image: ci-cd-pipeline
-    container_name: springboot-docker
+    container_name: springboot-ci-cd
     ports:
       - "8087:8087"

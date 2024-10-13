@@ -7,7 +7,7 @@ public class DockerController {
 
     @GetMapping("/gg")
     public String teste(){
-        return "!!! MIAMI HEAT !!!!!!";
+        return "!!! MIAMI HEAT !";
     }
 
 }
