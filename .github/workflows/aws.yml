@@ -6,8 +6,6 @@ on:
     branches: [ "main" ]
 
   jobs:
-
-
     build:
       runs-on: ubuntu-latest
 
@@ -20,12 +18,16 @@ on:
           with:
             distribution: 'temurin'
             java-version: '17'
+
         - name: Build project
           run: mvn clean install -DsKipTests
+
         - name: Login Docker Hub
           run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+
         - name: Build docker image
           run: docker build -t daniel00dev/ci-cd-pipeline .
+
         - name: push image docker
           run: docker push daniel00dev/ci-cd-pipeline
 
