@@ -26,3 +26,5 @@ jobs:
         run: docker build -t daniel00dev/ci-cd-pipeline .
       - name: push image docker
         run: docker push daniel00dev/ci-cd-pipeline
+      - name: Pull image docker hub
+        run: docker pull daniel00dev/ci-cd-pipeline:latest
