@@ -26,10 +26,6 @@ jobs:
         run: docker build -t daniel00dev/ci-cd-pipeline:latest .
       - name: push image docker hub
         run: docker push daniel00dev/ci-cd-pipeline:latest
-      - name: build
-        run : mvn clean install -DsKipTests
-      - name : Run docker container
-        run: sudo docker run -d -p 8089:8089 --name api-ci-cd daniel00dev/ci-cd-pipeline:latest
 
 #
 #  deploy:
