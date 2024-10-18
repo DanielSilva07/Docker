@@ -25,7 +25,7 @@ jobs:
       - name: Build docker image
         run: docker build -t daniel00dev/ci-cd-pipeline .
       - name: push image docker hub
-        run: docker push daniel00dev/ci-cd-pipeline
+        run: docker push daniel00dev/ci-cd-pipeline:latest
 #
 #  deploy:
 #    needs: build
